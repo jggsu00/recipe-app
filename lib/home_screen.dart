@@ -8,9 +8,9 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<Map<String, String>> recipes = [
-      {'name': 'Spaghetti Carbonara', 'details': 'Ingredients: Pasta, Eggs, Bacon, Cheese'},
-      {'name': 'Chicken Curry', 'details': 'Ingredients: Chicken, Curry Paste, Coconut Milk'},
-      {'name': 'Beef Stroganoff', 'details': 'Ingredients: Beef, Mushrooms, Sour Cream'},
+      {'name': 'Spaghetti Carbonara', 'details': 'Ingredients: Pasta, Eggs, Bacon, Cheese\nInstructions: Cook pasta, mix with eggs, bacon, and cheese.'},
+      {'name': 'Chicken Curry', 'details': 'Ingredients: Chicken, Curry Paste, Coconut Milk\nInstructions: Cook chicken, add curry paste, pour coconut milk, and simmer.'},
+      {'name': 'Beef Stroganoff', 'details': 'Ingredients: Beef, Mushrooms, Sour Cream\nInstructions: Sauté beef and mushrooms, add sour cream, and serve over noodles.'},
     ];
 
     return Scaffold(
@@ -47,7 +47,24 @@ class DetailsScreen extends StatelessWidget {
       appBar: AppBar(title: Text(recipe['name']!)),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Text(recipe['details']!),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              'Ingredients & Instructions:',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 10),
+            Text(recipe['details']!),
+            const SizedBox(height: 20),
+            Center(
+              child: ElevatedButton(
+                onPressed: () => Navigator.pop(context),
+                child: const Text('Back to Recipes'),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
