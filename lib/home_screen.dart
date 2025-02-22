@@ -1,6 +1,6 @@
 // home_screen.dart - Displays a list of recipes
 import 'package:flutter/material.dart';
-
+import 'details_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
